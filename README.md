@@ -19,6 +19,8 @@ This tool uses environment variables `GITHUB_USERNAME`, `GITHUB_TOKEN` to config
 
 Go to [GitHub](https://github.com) to create a new Personal Access Token (PAT).
 
+This tool can also use environment variable `SBOM_SOURCE_ROOT` as the default source folder to scan.
+
 ```shell
 $ git clone https://github.com/tidepool-org/sbom_gen.git
 $ cd sbom_gen
@@ -34,7 +36,7 @@ optional arguments:
   -h, --help            show this help message and exit
   --verbose, --no-verbose
                         enable verbose mode (default: off)
-  --source SOURCE_ROOT  set source folder (default: /Users/tapani/src/tidepool/LoopWorkspace)
+  --source SOURCE_ROOT  set source folder (default: ~/src/tidepool/LoopWorkspace)
   --target TARGET_ROOT  set target folder (default: ./output)
   --tag TAG             set arbitrary tag for use by templates (default: none)
   --build BUILD         set build number (default: none)

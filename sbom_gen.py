@@ -395,8 +395,8 @@ def main():
     """
     Main function
     """
-    default_source_root = os.path.expanduser(os.environ.get("SBOM_SOURCE_ROOT") or "~/src/tidepool/LoopWorkspace")
-    default_target_root = os.path.expanduser(os.environ.get("SBOM_TARGET_ROOT") or "./output")
+    default_source_root = os.environ.get("SBOM_SOURCE_ROOT") or "~/src/tidepool/LoopWorkspace"
+    default_target_root = os.environ.get("SBOM_TARGET_ROOT") or "./output"
     parser = argparse.ArgumentParser(description = 'Generate SBOM from a project folder and GitHub', add_help = False)
     parser.add_argument('--version', action = VersionAction, nargs = 0, help = 'show version information')
     parser.add_argument('-h', '--help', action = HelpAction, nargs = 0, help = 'show this help message and exit')
@@ -409,8 +409,8 @@ def main():
     args = parser.parse_args()
     if args.verbose:
         logger.setLevel(logging.DEBUG)
-    args.source_root = os.path.abspath(args.source_root)
-    args.target_root = os.path.abspath(args.target_root)
+    args.source_root = os.path.abspath(os.path.expanduser(args.source_root))
+    args.target_root = os.path.abspath(os.path.expanduser(args.target_root))
 
     logger.info(f"Tidepool SBOM Generator v{VERSION}")
     modules = SubModules(args)
